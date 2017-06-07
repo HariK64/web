@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>add a new post</h1>
+    <p>{{request.user.username}}
+    </p>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        title
+        <br>
+        <textarea rows='3' cols='100' name="title">{{post.title}}</textarea>
+        <br>
+        context
+        <br>
+         <textarea rows='20' cols='150' name="content">{{post.content}}</textarea>
+        {% if post.img %}
+        <p>Image:{{post.img}}</p>
+        {% endif %}
+        <input type="file" name="img" value="{{post.img}}" >
+        <br>
+        is published
+        <br>
+        <input type="checkbox" name="is_piblished"value="True" >
+        <br>
+        <input type="submit">
+</form>
+</body>
+</html>

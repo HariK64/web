@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static  'polls/css/style.css'%}" rel="stylesheet">
+</head>
+<body>
+{% for i in object_list %}
+<a  class="text" href="{% url 'result' i.id%}">{{i.question_text}}</a>
+<p class="date">{{i.pub_date}}</p>
+{% endfor %}
+<img src="{% static 'polls/images/peacock.jpeg'%}"/>
+
+</body>
+</html>
