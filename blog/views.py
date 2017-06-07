@@ -76,5 +76,32 @@ def delete_post(request,id):
 #class DeletePostView(generic.DeleteView):
     model = Post
     success_url = '/'
+def signup(request):
+    template = 'registration/signup.html'
+    context = {}
+    if request.method=='POST':
+        firstname=request.POST['firstname']
+        lastname=request.POST['lastname']
+        email=request.POST['email']
+        username=request.POST['username']
+        password1=request.POST['password1']
+        password2=request.POST['password2']
+
+
+        if len(User.objects.filter(email=email)) != 0:
+            context['errors']="email is already taken"
+            return  render(request,template,context)
+
+
+        if len(User.objects.filter(username=username))!=0:
+            context['errors'] = "username is already taken"
+            return render(request, template, context)
+
+        if password1==password2:
+            user=User(firstname=firstname,lastname=lastname,email=email,username=username,password1=password1,password2=password2)
+            user.set_password(password1)
+            user.save()
+            return redirect('login')
+    return render(request, template, context)
 
 

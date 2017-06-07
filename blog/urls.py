@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'(?P<pk>[0-9]+)/edit',edit_post,name='edit_post'),
     url(r'(?P<id>[0-9]+)/delete', delete_post, name='delete_post'),
 
+
 ]
 

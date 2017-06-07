@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <title>MY WEBPAGE</title>
+    <link rel="stylesheet" href="1.CSS" type="text/css">
+</head>
+<body>
+ <h1 align="center">YOU ARE WELCOME!!</h1>
+
+
+<a href="https://www.google.co.in/?gws_rd=ssl"><h2 align="center">LEARN WEB DEVELOPMENT -PROCESS MADE EASY</h2></a>
+{% if form.errors %}
+ <p>username or password is wrong</p>
+ {% endif %}
+
+ <form method="POST"action="{% url 'login' %}">
+    {% csrf_token %}
+     {{form.username.label_tag}}
+    <input type="text" name="username">
+     <br>
+     {{form.password.label_tag}}
+    <input type="password" name="password">
+     <br>
+    <!-- {{form}}
+     <br>--->
+    <input type="submit">
+</form>
+
+</body>
+</html>
